@@ -18,3 +18,8 @@ Run `docker exec -it your-container-name /bin/sh`
 Run `cd /your/target/path`
 
 Run `composer install`
+
+I have also installed vim in the container so that you can edit
+environment-specific things, such as a secrets.env file. Let's say that you
+have /your/target/path/docker/docker-compose.yml. You could
+`vim /your/target/path/docker/secrets.env`
