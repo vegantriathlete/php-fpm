@@ -1,7 +1,7 @@
 FROM php:fpm-alpine3.19
 
 RUN apk update \
-&&  apk add --update --no-cache --virtual .build-dependencies \
+&&  apk add \
         composer \
         vim \
         libjpeg-turbo-dev \
@@ -19,9 +19,7 @@ RUN apk update \
 &&  docker-php-ext-install \
        gd opcache pdo_pgsql pgsql  \
 &&  docker-php-ext-enable \
-       apcu gd opcache pdo_pgsql pgsql \
-&&  pecl clear-cache \
-&&  apk del .build-dependencies
+       apcu gd opcache pdo_pgsql pgsql
 
 COPY composer /usr/bin/composer
 RUN chmod 755 /usr/bin/composer
